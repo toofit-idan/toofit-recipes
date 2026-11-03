@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f6f2fd">
+  <title>ספר המתכונים של TOOFIT</title>
+  <link rel="icon" href="assets/logo-icon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="gate.js"></script>
+</head>
+<body>
+  <div class="gate" id="gate" role="dialog" aria-modal="true" aria-labelledby="gateTitle">
+    <div class="blobs" aria-hidden="true">
+      <span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span>
+    </div>
+    <form class="gate-card" id="gateForm" autocomplete="off">
+      <img src="assets/logo.svg" alt="TOOFIT" class="gate-logo">
+      <h1 id="gateTitle">ספר המתכונים של <span class="hl">העצלנים והחטובים</span></h1>
+      <p>הכניסה למתאמנים בליווי. הקלידו את הסיסמה שקיבלתם.</p>
+      <label class="search gate-field">
+        <input id="gatePassword" type="password" placeholder="סיסמה" aria-label="סיסמה" required>
+      </label>
+      <p class="gate-error" id="gateError" role="alert" hidden>הסיסמה לא נכונה. נסו שוב.</p>
+      <button type="submit" class="pill pill-primary gate-btn">כניסה</button>
+    </form>
+  </div>
+
+  <header class="topbar">
+    <a href="#top" class="topbar-logo" aria-label="TOOFIT - לראש הדף"><img src="assets/logo.svg" alt="TOOFIT"></a>
+    <button class="pill pill-week" id="openWeek" type="button">
+      השבוע שלי <span class="count" id="weekCount">0</span>
+    </button>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="blobs" aria-hidden="true">
+        <span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span>
+      </div>
+      <h1>ספר המתכונים של <span class="hl">העצלנים והחטובים</span></h1>
+      <p>אוכל טעים ומגוון, עם כל הערכים התזונתיים - בלי להרגיש בדיאטה.</p>
+    </section>
+
+    <section class="finder" aria-label="חיפוש וסינון">
+      <label class="search">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input id="search" type="search" placeholder="מה בא לך לאכול?" autocomplete="off">
+      </label>
+
+      <div class="chips" id="mealChips" role="group" aria-label="סוג ארוחה"></div>
+      <div class="chips" id="proteinChips" role="group" aria-label="חלבון"></div>
+
+      <div class="cal-filter">
+        <label for="calories">קלוריות למנה</label>
+        <select id="calories">
+          <option value="">הכל</option>
+          <option value="150">עד 150 קק"ל</option>
+          <option value="300">עד 300 קק"ל</option>
+          <option value="400">עד 400 קק"ל</option>
+          <option value="500">עד 500 קק"ל</option>
+        </select>
+      </div>
+    </section>
+
+    <section aria-label="מתכונים">
+      <p class="result-count" id="resultCount" aria-live="polite"></p>
+      <div class="grid" id="grid"></div>
+      <p class="empty" id="empty" hidden>לא מצאנו מתכון כזה. נסו מילה אחרת או הסירו סינון.</p>
+    </section>
+
+    <section class="tips" id="tips">
+      <div class="tips-inner">
+        <figure class="tips-us reveal">
+          <img src="assets/idan-gil.jpg" alt="עידן וגיל">
+          <figcaption>ככה אנחנו מתכננים את השבוע</figcaption>
+        </figure>
+        <h2 class="reveal">מבשלים פעמיים, רגועים כל השבוע</h2>
+        <p class="lead reveal">שבוע עמוס? בדיוק בשבילו יש את השיטה הזו. הסוד: לבשל פעמיים בשבוע, ולהגיע לכל ארוחה מוכנים.</p>
+
+        <div class="tip-card reveal">
+          <h3>בוחרים 2 ימי בישול</h3>
+          <p>למשל מוצאי שבת ושלישי בערב: במוצאי שבת מבשלים לראשון, שני ושלישי. בשלישי מבשלים לרביעי וחמישי. שישי ושבת כבר שונים - בשישי צריך פתרון רק עד הצהריים, ובערב יש ארוחת שישי.</p>
+        </div>
+
+        <ol class="steps-list">
+          <li class="reveal">
+            <h3>פחמימה</h3>
+            <p>בוחרים מנת פחמימה לימים הבאים, עד יום הבישול הבא (אפשר גם שתיים, לגיוון). ומשחקים איתה: בורגול חם ליד מנת חלבון, או קר בתוך סלט.</p>
+          </li>
+          <li class="reveal">
+            <h3>חלבון</h3>
+            <p>מכינים מנות חלבון חמות: חזה עוף, פרגית, סינטה, טופו, שייטל. ויש גם חלבון שמגיע מוכן, בלי מאמץ: טונה, גבינות, ביצים, מנות בשר בהכנה מהירה.</p>
+          </li>
+          <li class="reveal">
+            <h3>ירקות</h3>
+            <p>הירקות הם מקור טוב לשובע ולסיבים תזונתיים, ויש שני סוגים:</p>
+            <ul>
+              <li><strong>ירקות זמינים:</strong> כדאי שתמיד יחכו במקרר מיני ירקות - עגבניות שרי, מיני מלפפונים, מיני גמבות. שוטפים, שמים בשקית ולוקחים איתכם.</li>
+              <li><strong>ירקות מבושלים:</strong> שעועית ירוקה מוקפצת, כרובית וזוקיני בתנור. מכינים מגש אנטיפסטי באותו יום בישול, והוא מחזיק לכם עד ליום הבישול הבא.</li>
+            </ul>
+          </li>
+          <li class="reveal">
+            <h3>מסתכלים על השבוע</h3>
+            <p>צריך קופסאות לעבודה? יש אירוע מיוחד? מתארגנים מראש.</p>
+          </li>
+        </ol>
+
+        <div class="tip-card glow reveal">
+          <h3>למה זה עובד</h3>
+          <p>כשמכינים מראש, לא מגיעים רעבים לארוחות - ולא נופלים למאכלים שפחות מתאימים לתקופה שבחרתם לעצמכם.</p>
+          <p><strong>בהתחלה</strong> תפספסו לפעמים את הכמויות. עם הזמן זה משתפר - לבשל זה סקיל.</p>
+        </div>
+
+        <div class="hunger-check reveal" id="hungerCheck">
+          <h2>מה רמת הרעב שלכם עכשיו?</h2>
+          <p class="lead">בוחרים את התחושה שהכי מתאימה לכם עכשיו.</p>
+          <div class="feel-options" id="feelOptions" role="group" aria-label="מה רמת הרעב שלכם עכשיו"></div>
+        </div>
+
+        <div class="scale-box" id="scaleBox" hidden>
+          <h2>סולם הרעב והשובע</h2>
+          <p class="lead"><strong>אוכלים בשלב 3, עוצרים בשלב 7.</strong> אפשר להזיז את הסמן.</p>
+          <div class="scale-readout" id="scaleReadout">
+            <span class="scale-num" id="scaleNum">3</span>
+            <p class="scale-text" id="scaleText"></p>
+          </div>
+          <input type="range" id="scaleRange" min="0" max="10" step="1" value="3" aria-label="שלב בסולם הרעב והשובע">
+          <div class="scale-ticks" aria-hidden="true" id="scaleTicks"></div>
+          <div class="feel-result" id="feelResult" aria-live="polite"></div>
+          <button type="button" class="again" data-feel-again>לבחור תחושה אחרת</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <img src="assets/logo.svg" alt="TOOFIT">
+  </footer>
+
+  <div class="sheet-backdrop" id="backdrop" hidden></div>
+
+  <article class="sheet" id="recipeSheet" role="dialog" aria-modal="true" aria-labelledby="recipeTitle" hidden>
+    <div class="close-wrap"><button class="close" type="button" data-close aria-label="סגירה">×</button></div>
+    <div id="recipeBody"></div>
+  </article>
+
+  <aside class="sheet" id="weekSheet" role="dialog" aria-modal="true" aria-labelledby="weekTitle" hidden>
+    <div class="close-wrap"><button class="close" type="button" data-close aria-label="סגירה">×</button></div>
+    <div class="sheet-inner">
+      <h2 id="weekTitle">השבוע שלי</h2>
+      <div class="tip-card glow">
+        <p>בחרתם מתכונים? לוחצים "שמירה לשבוע", ומתחילים לחשוב איך להכפיל כמויות כדי שיספיקו לכמה ימים קדימה. ואל תשכחו לבחור חלבון, פחמימה וירקות.</p>
+        <a href="#tips" class="link" data-close>איך מתכוננים לשבוע ←</a>
+      </div>
+      <ul class="week-list" id="weekList"></ul>
+      <p class="empty" id="weekEmpty">עוד לא שמרתם מתכונים. לוחצים "שמירה לשבוע" על מה שמתחשק.</p>
+      <p class="note">הרשימה נשמרת רק בטלפון הזה. מחיקת נתוני הדפדפן או החלפת טלפון ימחקו אותה.</p>
+    </div>
+  </aside>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="data/recipes.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
